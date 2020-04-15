@@ -5,14 +5,16 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(PermissionSeed::class);
-        $this->call(RoleSeed::class);
-        $this->call(UserSeed::class);
+        $this->call([
+            PermissionSeed::class,
+            RoleSeed::class,
+            UserSeed::class,
+        ]);
     }
 }
