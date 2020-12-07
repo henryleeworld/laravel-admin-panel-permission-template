@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreRolesRequest;
 use App\Http\Requests\Admin\UpdateRolesRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
 {

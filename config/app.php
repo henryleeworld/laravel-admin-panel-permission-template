@@ -70,19 +70,6 @@ return [
     'timezone' => 'UTC',
 
     /*
-     |--------------------------------------------------------------------------
-     | Application Date Format
-     |--------------------------------------------------------------------------
-     |
-     | Here you may specify the default date format for your application, which
-     | will be used with date and date-time functions.
-     |
-     */
-
-     'date_format' => 'Y-m-d',
-     'date_format_js' => 'yy-mm-dd',
-
-    /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
@@ -93,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'zh-TW',
+    'locale' => 'zh_TW',
 
     /*
     |--------------------------------------------------------------------------
@@ -228,7 +215,7 @@ return [
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
-        'Redis' => Illuminate\Support\Facades\Redis::class,
+        // 'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,

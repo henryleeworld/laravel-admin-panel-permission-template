@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Artisan;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
