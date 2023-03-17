@@ -36,21 +36,11 @@ table.dataTable thead th {
     border-bottom: 1px solid #c8ced3;
 }
 
-.select2 {
-    max-width: 100%;
-    width: 100% !important;
-}
-
-.select2-selection__rendered {
-    padding-bottom: 5px !important;
-}
-
 .has-error .invalid-feedback {
     display: block !important;
 }
 
-.btn-info,
-.badge-info {
+.btn-info {
     color: white;
 }
 
@@ -82,7 +72,7 @@ table.dataTable thead .sorting_desc {
 }
 
 .btn-group-xs > .btn,
-.btn-xs {
+.btn-sm {
     padding: 1px 5px;
     font-size: 12px;
     line-height: 1.5;

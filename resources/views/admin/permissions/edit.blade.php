@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
 
 <div class="card">
@@ -11,7 +11,7 @@
             @csrf
             @method('PUT')
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('cruds.permission.fields.title') }}*</label>
+                <label for="name" class="form-label">{{ trans('cruds.permission.fields.title') }}*</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($permission) ? $permission->name : '') }}" required>
                 @if($errors->has('name'))
                     <em class="invalid-feedback">

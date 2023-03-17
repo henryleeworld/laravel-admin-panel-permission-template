@@ -1,14 +1,12 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
-
 <div class="card">
     <div class="card-header">
         {{ trans('global.show') }} {{ trans('cruds.user.title') }}
     </div>
-
     <div class="card-body">
         <div class="mb-2">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" style="width:100%">
                 <tbody>
                     <tr>
                         <th>
@@ -36,7 +34,7 @@
                     </tr>
                     <tr>
                         <th>
-                            角色
+                            {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <td>
                             @foreach($user->roles()->pluck('name') as $role)
@@ -50,8 +48,6 @@
                 {{ trans('global.back_to_list') }}
             </a>
         </div>
-
-
     </div>
 </div>
 @endsection

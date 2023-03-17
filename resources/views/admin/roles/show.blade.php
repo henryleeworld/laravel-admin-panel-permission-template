@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
 
 <div class="card">
@@ -8,7 +8,7 @@
 
     <div class="card-body">
         <div class="mb-2">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" style="width:100%">
                 <tbody>
                     <tr>
                         <th>
@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <th>
-                            權限
+                            {{ trans('cruds.role.fields.permissions') }}
                         </th>
                         <td>
                             @foreach($role->permissions()->pluck('name') as $permission)
@@ -42,14 +42,12 @@
                 {{ trans('global.back_to_list') }}
             </a>
         </div>
-
         <nav class="mb-3">
             <div class="nav nav-tabs">
 
             </div>
         </nav>
         <div class="tab-content">
-
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
-# Laravel 8 管理面板（權限模板）
+# Laravel 10 管理面板（權限模板）
 
-引入 spatie 的 laravel-permission 套件來擴增以角色為基礎的存取控制，會因為不同的作業功能產生不同的角色，執行某項操作的權限會被賦予特定的角色。Laravel 8 管理面板（權限模板）主要是用的 [QuickAdminPanel](https://quickadminpanel.com) 生成的，除了一些定制代碼，可依需求彈性改造的工具。
+引入 spatie 的 laravel-permission 套件來擴增以角色為基礎的存取控制，會因為不同的作業功能產生不同的角色，執行某項操作的權限會被賦予特定的角色。
 
 ## 使用方式
 - 把整個專案複製一份到你的電腦裡，這裡指的「內容」不是只有檔案，而是指所有整個專案的歷史紀錄、分支、標籤等內容都會複製一份下來。
@@ -12,7 +12,7 @@ $ git clone
 ```sh
 $ composer install
 ```
-- 產⽣ Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
+- 產生 Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
 ```sh
 $ php artisan key:generate
 ```
@@ -26,5 +26,5 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/0jmpyZq.png)
+![](https://i.imgur.com/IzqosMp.png)
 > 利用使用者-角色-權限的架構，角色可以當成群組的概念來使用

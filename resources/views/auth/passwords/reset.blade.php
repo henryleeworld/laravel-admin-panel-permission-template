@@ -1,58 +1,60 @@
-@extends('layouts.app')
+@extends('layouts.guest')
+
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card-group">
-            <div class="card p-4">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
-                        <h1>
-                            <div class="login-logo">
-                                <a href="#">
-                                    {{ env('APP_NAME', 'Permissions Manager') }}
-                                </a>
-                            </div>
-                        </h1>
-                        <p class="text-muted"></p>
-                        <div>
-                            <input name="token" value="{{ $token }}" type="hidden">
-                            <div class="form-group has-feedback">
-                                <input type="email" name="email" class="form-control" required placeholder="電子郵件">
-                                @if($errors->has('email'))
-                                    <em class="invalid-feedback">
-                                        {{ $errors->first('email') }}
-                                    </em>
-                                @endif
-                            </div>
-                            <div class="form-group has-feedback">
-                                <input type="password" name="password" class="form-control" required placeholder="密碼">
-                                @if($errors->has('password'))
-                                    <em class="invalid-feedback">
-                                        {{ $errors->first('password') }}
-                                    </em>
-                                @endif
-                            </div>
-                            <div class="form-group has-feedback">
-                                <input type="password" name="password_confirmation" class="form-control" required placeholder="密碼確認">
-                                @if($errors->has('password_confirmation'))
-                                    <em class="invalid-feedback">
-                                        {{ $errors->first('password_confirmation') }}
-                                    </em>
-                                @endif
-                            </div>
+    <div class="col-md-6">
+        <div class="card mb-4 mx-4">
+            <div class="card-body p-4">
+                <h1>{{ __('Reset Password') }}</h1>
+
+                <form action="{{ route('password.update') }}" method="POST">
+                    @csrf
+
+                    <div class="input-group mb-3"><span class="input-group-text">
+                    <svg class="icon">
+                      <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                    </svg></span>
+                        <input class="form-control @error('email') is-invalid @enderror" type="text"
+                               placeholder="{{ __('Email') }}">
+                        @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                    重設密碼
-                                </button>
-                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="input-group mb-4"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      </svg></span>
+                        <input class="form-control @error('password') is-invalid @enderror" type="password"
+                               id="password" name="password"
+                               placeholder="{{ __('Password') }}">
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
-                    </form>
-                </div>
+                        @enderror
+                    </div>
+
+                    <div class="input-group mb-4"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      </svg></span>
+                        <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password"
+                               id="password_confirmation" name="password_confirmation"
+                               placeholder="{{ __('Confirm Password') }}">
+                        @error('password_confirmation')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <button class="btn btn-block btn-primary"
+                            type="submit">{{ __('Reset Password') }}</button>
+                </form>
+
             </div>
         </div>
     </div>
-</div>
 @endsection

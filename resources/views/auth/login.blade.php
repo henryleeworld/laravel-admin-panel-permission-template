@@ -1,72 +1,61 @@
-@extends('layouts.app')
+@extends('layouts.guest')
+
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card-group">
-            <div class="card p-4">
+    <div class="col-lg-8">
+        <div class="card-group d-block d-md-flex row">
+            <div class="card col-md-7 p-4 mb-0">
                 <div class="card-body">
-                    @if(\Session::has('message'))
-                        <p class="alert alert-info">
-                            {{ \Session::get('message') }}
-                        </p>
-                    @endif
-                    <form method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-                        <h1>{{ env('APP_NAME', 'Permissions Manager') }}</h1>
-                        <p class="text-muted">登入</p>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fa fa-user"></i>
-                                </span>
+                    <h1>{{ __('Login') }}</h1>
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <div class="input-group mb-3"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                      </svg></span>
+                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
+                                   placeholder="{{ __('Email') }}" required autofocus>
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            <input name="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus placeholder="電子郵件" value="{{ old('email', null) }}">
-                            @if($errors->has('email'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('email') }}
-                                </div>
-                            @endif
+                            @enderror
                         </div>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        <div class="input-group mb-4"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                      </svg></span>
+                            <input class="form-control @error('password') is-invalid @enderror" type="password"
+                                   name="password"
+                                   placeholder="{{ __('Password') }}" required>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            <input name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="密碼">
-                            @if($errors->has('password'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('password') }}
-                                </div>
-                            @endif
+                            @enderror
                         </div>
-
-                        <div class="input-group mb-4">
-                            <div class="form-check checkbox">
-                                <input class="form-check-input" name="remember" type="checkbox" id="remember" style="vertical-align: middle;" />
-                                <label class="form-check-label" for="remember" style="vertical-align: middle;">
-                                    記住我
-                                </label>
-                            </div>
-                        </div>
-
                         <div class="row">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-primary px-4">
-                                    登入
-                                </button>
+                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
                             </div>
-                            <div class="col-6 text-right">
-                                <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                    忘記密碼？
-                                </a>
-
-                            </div>
+                            @if (Route::has('password.request'))
+                                <div class="col-6 text-end">
+                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0"
+                                       type="button">{{ __('Forgot Your Password?') }}</a>
+                                </div>
+                            @endif
                         </div>
                     </form>
                 </div>
             </div>
+            <div class="card col-md-5 text-white bg-primary py-5">
+                <div class="card-body text-center">
+                    <div>
+                        <h2>{{ __('Sign up') }}</h2>
+                        <a href="{{ route('register') }}"
+                           class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 @endsection

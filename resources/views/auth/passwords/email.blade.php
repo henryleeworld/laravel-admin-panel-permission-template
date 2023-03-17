@@ -1,42 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.guest')
+
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card-group">
-            <div class="card p-4">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-                        <h1>
-                            <div class="login-logo">
-                                <a href="#">
-                                    {{ env('APP_NAME', 'Permissions Manager') }}
-                                </a>
-                            </div>
-                        </h1>
-                        <p class="text-muted"></p>
-                        <div>
-                            {{ csrf_field() }}
-                            <div class="form-group has-feedback">
-                                <input type="email" name="email" class="form-control" required="autofocus" placeholder="電子郵件">
-                                @if($errors->has('email'))
-                                    <em class="invalid-feedback">
-                                        {{ $errors->first('email') }}
-                                    </em>
-                                @endif
-                            </div>
+    <div class="col-md-6">
+        <div class="card mb-4 mx-4">
+            <div class="card-body p-4">
+                <h1>{{ __('Reset Password') }}</h1>
+                <form action="{{ route('password.email') }}" method="POST">
+                    @csrf
+                    @if(session('status'))
+                        <div role="alert" class="alert alert-success py-2 ">
+                            <ul class="py-0 m-0">
+                                <li>{{ session('status') }}</li>
+                            </ul>
                         </div>
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                    重設密碼
-                                </button>
-                            </div>
+                    @endif
+                    <div class="input-group mb-3"><span class="input-group-text">
+                    <svg class="icon">
+                      <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                    </svg></span>
+                        <input class="form-control @error('email') is-invalid @enderror" type="email"
+                               id="email" name="email" placeholder="{{ __('Email') }}">
+                        @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
-                    </form>
-                </div>
+                        @enderror
+                    </div>
+                    <button class="btn btn-block btn-primary"
+                            type="submit">{{ __('Send Password Reset Link') }}</button>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
