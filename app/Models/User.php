@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Hash;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,18 +42,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * Hash password
-     * @param $input
-     */
-    public function setPasswordAttribute($input)
-    {
-        if ($input)
-            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
-    }
-    
+        'password' => 'hashed',
+    ];    
     
     public function role()
     {
