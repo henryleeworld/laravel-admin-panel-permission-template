@@ -13,8 +13,7 @@
                     <svg class="icon">
                       <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                     </svg></span>
-                        <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}" required
-                               autocomplete="name" autofocus>
+                        <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                         <span class="invalid-feedback">
                             {{ $message }}
@@ -26,8 +25,7 @@
                     <svg class="icon">
                       <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
                     </svg></span>
-                        <input class="form-control" type="text" name="email" placeholder="{{ __('Email') }}" required
-                               autocomplete="email">
+                        <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" required autocomplete="email">
                         @error('email')
                         <span class="invalid-feedback">
                             {{ $message }}
@@ -52,9 +50,8 @@
                     <svg class="icon">
                       <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
                     </svg></span>
-                        <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password"
-                               name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required
-                               autocomplete="new-password">
+                        <input id="password-confirm" class="form-control" type="password"
+                               name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
                     </div>
 
                     <button class="btn btn-block btn-primary" type="submit">{{ __('Register') }}</button>

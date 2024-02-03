@@ -14,7 +14,7 @@
                       <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
                     </svg></span>
                         <input class="form-control @error('email') is-invalid @enderror" type="text"
-                               placeholder="{{ __('Email') }}">
+                               placeholder="{{ __('Email') }}" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -28,7 +28,7 @@
                       </svg></span>
                         <input class="form-control @error('password') is-invalid @enderror" type="password"
                                id="password" name="password"
-                               placeholder="{{ __('Password') }}">
+                               placeholder="{{ __('Password') }}" required autocomplete="new-password">
                         @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -40,9 +40,9 @@
                       <svg class="icon">
                         <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
                       </svg></span>
-                        <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password"
-                               id="password_confirmation" name="password_confirmation"
-                               placeholder="{{ __('Confirm Password') }}">
+                        <input class="form-control" type="password"
+                               id="password-confirm" name="password_confirmation"
+                               placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
                         @error('password_confirmation')
                         <div class="invalid-feedback">
                             {{ $message }}
